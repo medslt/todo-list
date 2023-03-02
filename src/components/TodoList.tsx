@@ -11,38 +11,56 @@ export type TaskType = {
 }
 
 type TodoListProps = {
-    tasks: TaskType[]
+    tasks: TaskType[],
+    updateTaskType: (type: TaskTypes, taskId: string) => void
 }
 
 type TaskProps= {
     task: TaskType
+    updateTaskType: (type: TaskTypes, taskId: string) => void
 }
 
-const Task = ({task}: TaskProps) => {
+const Task = ({task, updateTaskType}: TaskProps) => {
     const isCompleted = task.type === TaskTypes.COMPLETED
+    const handleTaskCheckbox: React.ChangeEventHandler<HTMLInputElement>  = (e) => {
+            const isChecked = e.target.checked
+
+            const newTaskType = isChecked? TaskTypes.COMPLETED : TaskTypes.PENDING
+
+            updateTaskType(newTaskType, task.id)
+    }
     return (
         <div key={task.id} style={{textDecoration: 'line-through'}} data-testid="task">
-            <input type="checkbox" checked={isCompleted}  onChange={()=>{}} id={task.id} /> <label htmlFor={task.id}>{task.description} </label>
+            <input type="checkbox" checked={isCompleted}  onChange={handleTaskCheckbox} id={task.id} /> <label htmlFor={task.id}>{task.description} </label>
          </div>
     )
 }
-const TodoList = ({tasks}: TodoListProps) => {
+const TodoList = ({tasks, updateTaskType}: TodoListProps) => {
     const pendingTasks: JSX.Element[] = []
     const completedTasks: JSX.Element[] = []
     
     tasks.forEach((task) => {
         if (task.type === TaskTypes.PENDING) {
-            pendingTasks.push(<Task key={task.id} task={task}/>)
+            pendingTasks.push(<Task key={task.id} task={task} updateTaskType={updateTaskType}/>)
             return
         }
 
-        completedTasks.push(<Task key={task.id} task={task}/>)
+        completedTasks.push(<Task key={task.id} task={task}  updateTaskType={updateTaskType}/>)
     })
 
-    return (<> 
-        {pendingTasks}
-        {completedTasks}
-     </>)
+    return (
+        <div> 
+            <h3>Tasks</h3>
+            <div data-testid="pendingTasks">
+                {pendingTasks.length ? pendingTasks : 'No pending Tasks'}
+            </div>
+           
+            <hr />
+            <div data-testid="completedTasks">
+             {completedTasks}
+            </div>
+        </div>
+    )
 }
 
 

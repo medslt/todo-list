@@ -13,8 +13,8 @@ const TasksData = [{
   type: TaskTypes.COMPLETED
 }]
 
-test('show all tasks', () => {
-  render(<TodoList  tasks={TasksData}/>);
+test('User story 1: show all tasks', () => {
+  render(<TodoList  tasks={TasksData} updateTaskType={()=> {}}/>);
 
   expect(screen.getAllByTestId('task')).toHaveLength(2);
 });

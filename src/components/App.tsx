@@ -29,10 +29,20 @@ function App() {
         setTasks([newTask, ...tasks])
      }
   }
+
+  const updateTaskType = (type: TaskTypes, taskId: string) => {
+     const taskToUpateIdex = tasks.findIndex((task) => (task.id === taskId))
+
+     const newTasks = [...tasks]
+
+     newTasks[taskToUpateIdex] = {...tasks[taskToUpateIdex], type}
+
+     setTasks(newTasks)
+  }
   return (
     <div>
       <CreateTask handleCreateTask={handleCreateTask}/>
-      <TodoList tasks={tasks} />
+      <TodoList tasks={tasks} updateTaskType={updateTaskType}/>
     </div>
   )
 }

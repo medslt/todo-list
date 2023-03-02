@@ -1,6 +1,8 @@
 # Todo list
 Technical task for a job interview. For more details see https://github.com/medslt/todo-list/blob/main/NovaFori%20Developer%20Test.pdf
 
+# Demo
+https://medslt.github.io/todo-list/
 ## Setup
 Run `npm install`, then run `npm start` to start the application and `npm test` to run the tests.
 

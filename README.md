@@ -29,7 +29,7 @@ Run `npm install`, then run `npm start` to start the application and `npm test` 
 • What technical and functional assumptions did you make when implementing
 your solution?
   - split the logic into small components 
-  - manage the state in one place (App.tsx) and share the data and action between the other component
+  - manage the state in one place (App.tsx) and share the data and actions between the other components
   
     
 

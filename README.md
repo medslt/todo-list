@@ -15,10 +15,10 @@ Run `npm install`, then run `npm start` to start the application and `npm test` 
 
 ## Code architecture
 
-***`src/components/App.tsx`*** The start of the application and contains all the logic  
-***`src/components/TodoList.tsx`*** a component to display the list of tasks
-***`src/components/Task.tsx`*** a component to display on task
-***`src/components/CreateTask.tsx`*** a component to create a task
+***`src/components/App.tsx`*** The start of the application and contains all the logic.  
+***`src/components/TodoList.tsx`*** a component to display the list of tasks.   
+***`src/components/Task.tsx`*** a component to display on task.   
+***`src/components/CreateTask.tsx`*** a component to create a task. 
 
 ## Spec questions
 • How long did you spend on your solution? around 4 hours  

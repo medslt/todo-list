@@ -1,4 +1,5 @@
 
+import style from './CreateTask.module.css'
 
 type CreateTaskProps = {
     handleCreateTask: (description: string) => void
@@ -24,20 +25,20 @@ const CreateTask = ({handleCreateTask}: CreateTaskProps) => {
 
     return (
         <div>
-        <form method="post" onSubmit={handleSubmit}>
-          <label>
-            Enter your new Task:
-            <textarea
-              name="description"
-              placeholder="Enter your new Task"
-              rows={4}
-              cols={40}
-            />
-          </label>
-          <hr />
-          <button type="reset">Reset</button>
-          <button type="submit">Add Task</button>
-        </form>
+          <form className={style.form} method="post" onSubmit={handleSubmit}>
+              <label className={style.create}>
+                 Enter your new Task:
+                <textarea
+                  name="description"
+                  placeholder="Enter your new Task"
+                  rows={4}
+                  cols={40}
+                />
+              </label>
+            <hr />
+            <button className={style.action} type="submit">Add Task</button>
+            <button  className={style.action} type="reset">Reset</button>
+          </form>
       </div>
     )
 }

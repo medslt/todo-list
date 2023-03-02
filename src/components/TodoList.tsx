@@ -1,3 +1,5 @@
+import React from 'react';
+import style from './TodoList.module.css'
 
 export enum TaskTypes {
     COMPLETED='completed',
@@ -9,6 +11,7 @@ export type TaskType = {
     description: string,
     type: TaskTypes
 }
+
 
 type TodoListProps = {
     tasks: TaskType[],
@@ -29,12 +32,17 @@ const Task = ({task, updateTaskType}: TaskProps) => {
 
             updateTaskType(newTaskType, task.id)
     }
+
     return (
-        <div key={task.id} style={{textDecoration: 'line-through'}} data-testid="task">
-            <input type="checkbox" checked={isCompleted}  onChange={handleTaskCheckbox} id={task.id} /> <label htmlFor={task.id}>{task.description} </label>
+        <div key={task.id}  className={isCompleted? style.completed : ''} data-testid="task">
+            <label htmlFor={task.id}>
+                <input type="checkbox" checked={isCompleted}  onChange={handleTaskCheckbox} id={task.id} /> 
+                {task.description} 
+            </label>
          </div>
     )
 }
+
 const TodoList = ({tasks, updateTaskType}: TodoListProps) => {
     const pendingTasks: JSX.Element[] = []
     const completedTasks: JSX.Element[] = []

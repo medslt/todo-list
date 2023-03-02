@@ -1,19 +1,7 @@
 import { useState } from 'react';
 import TodoList, {TaskTypes, TaskType} from './TodoList'
 import CreateTask from './CreateTask'
-
-const Tasks = [{
-  id: 't1',
-  description: 'ttoo',
-  type: TaskTypes.PENDING
-},
-{
-  id: 't2',
-  description: 'tt44',
-  type: TaskTypes.COMPLETED
-}]
-
-
+import style from './App.module.css'
 
 function App() {
   const [tasks, setTasks] = useState<TaskType[]>([])
@@ -40,7 +28,7 @@ function App() {
      setTasks(newTasks)
   }
   return (
-    <div>
+    <div className={style.app}>
       <CreateTask handleCreateTask={handleCreateTask}/>
       <TodoList tasks={tasks} updateTaskType={updateTaskType}/>
     </div>

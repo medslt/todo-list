@@ -4,7 +4,7 @@ export enum TaskTypes {
     PENDING='pending'
 } 
 
-type TaskType = {
+export type TaskType = {
     id: string,
     description: string,
     type: TaskTypes
@@ -31,19 +31,17 @@ const TodoList = ({tasks}: TodoListProps) => {
     const completedTasks: JSX.Element[] = []
     
     tasks.forEach((task) => {
-        if( task.type === TaskTypes.PENDING) {
+        if (task.type === TaskTypes.PENDING) {
             pendingTasks.push(<Task key={task.id} task={task}/>)
-            
             return
         }
-
 
         completedTasks.push(<Task key={task.id} task={task}/>)
     })
 
     return (<> 
         {pendingTasks}
-    {completedTasks}
+        {completedTasks}
      </>)
 }
 

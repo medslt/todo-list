@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import TodoList, {TaskTypes} from '../TodoList';
 
@@ -14,7 +13,7 @@ const TasksData = [{
   type: TaskTypes.COMPLETED
 }]
 
-test('renders all task', () => {
+test('show all tasks', () => {
   render(<TodoList  tasks={TasksData}/>);
 
   expect(screen.getAllByTestId('task')).toHaveLength(2);
